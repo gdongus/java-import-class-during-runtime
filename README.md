@@ -12,7 +12,7 @@ javac  -Xlint:unchecked src/MainClass.java
 
 jar -cf my2.jar src/Test/TestClass.class
 
-## 3. Invoke main method of class that loads jar, class and executes method with arguments: jarfilepath, classname, methodname
+## 3. Load jar with class and executes method with arguments
 
 cd src/
 
