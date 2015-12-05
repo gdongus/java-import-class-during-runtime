@@ -39,7 +39,7 @@ public class MainClass {
         System.out.println("Instantiating method: " + args[2]);
         Method printMeMethod = MyClass.getMethod(args[2], new Class[]{});
 
-        System.out.println("Creating new instance of class: " + args[1]);
+        System.out.println("Instantiating class: " + args[1]);
         Object MyClassObj = MyClass.newInstance();
 
         System.out.println("Executing method: " + args[2]);
