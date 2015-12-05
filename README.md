@@ -2,7 +2,7 @@
 
 # README #
 
-## 1. Compile you want to load
+## 1. Compile
 javac  -Xlint:unchecked src/Test/TestClass.java
 javac  -Xlint:unchecked src/MainClass.java
 
