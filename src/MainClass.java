@@ -18,8 +18,7 @@ public class MainClass {
         URL resource = Thread.currentThread().getContextClassLoader().getResource(args[0]);
 
         if (resource == null) {
-            LOG.severe("Failed to load jar file : " + args[0]);
-            System.exit(1);
+            error("Failed to load jar file : " + args[0]);
         }
 
         LOG.info("Get URLClassLoader: " + args[0]);
@@ -51,24 +50,30 @@ public class MainClass {
                 LOG.info("Creating new instance of class: " + args[1]);
                 Object MyClassObj = clazz.newInstance();
 
-                LOG.info("Instantiating method: " + args[2]);
-                Method printMeMethod;
                 try {
-                    printMeMethod = clazz.getMethod(args[2], new Class[]{});
-                    LOG.info("Executing method: " + args[2]);
-                    printMeMethod.invoke(MyClassObj);
+                    LOG.info("Instantiating method: " + args[2]);
+                    final Method printMeMethod = clazz.getMethod(args[2], new Class[]{});
 
+                    try {
+                        LOG.info("Executing method: " + args[2]);
+                        printMeMethod.invoke(MyClassObj);
+                    } catch (Exception ex) {
+                        error("Failed to Execute method method: " + args[2]);
+                    }
                 } catch (Exception ex) {
-                    LOG.severe("Failed to instantiate method: " + args[2]);
-                    System.exit(1);
+                    error("Failed to instantiate method: " + args[2]);
                 }
             } catch (Exception ex) {
-                LOG.severe("Failed to instantiate class: " + args[1]);
-                System.exit(1);
+                error("Failed to instantiate class: " + args[1]);
             }
         } catch (Exception ex) {
-            LOG.severe("Failed to load class: " + args[1]);
-            System.exit(1);
+            error("Failed to load class: " + args[1]);
         }
     }
+
+    public static void error(final String msg) {
+        LOG.severe(msg);
+        System.exit(1);
+    }
 }
+
