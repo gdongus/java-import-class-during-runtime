@@ -1,7 +1,7 @@
 <!--
-  Title: Awesome Sysadmin
-  Description: A curated list of amazingly awesome open source sysadmin resources.
-  Author: n1trux
+  Title: Load Java classes at runtime
+  Description: A example of how to load java classes packed in jars at runtime.
+  Author: gdongus
   -->
 
 # How to load java classes packed in jars at runtime
